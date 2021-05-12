@@ -1,6 +1,6 @@
-import {UsuarioGitInterface} from './usuario-git.interface';
+import {UsuarioGitInterface} from '../../git-servicios/interfaces/usuario-git.interface';
 
-export interface GistInterface {
+export class GistUsuarioDto {
     id?: string;
     node_id?: string;
     git_pull_url?: string;

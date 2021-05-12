@@ -1,0 +1,21 @@
+# Levantar el ambiente: docker-compose up
+# Para reiniciar todo el ambiente: docker-compose down -v
+# este comando es para cuando hay bugs de conexion
+version: '3.3'
+services:
+  mongodb:
+    container_name: test_mongoV2
+    image: mongo:latest
+    restart: always
+    environment:
+      - MONGODB_DATABASE="test"
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo-db-volume:/data/db
+      - mongo-config-volume:/data/configdb
+# Names our volume
+volumes:
+  mongo-config-volume:
+  mongo-db-volume:
+
