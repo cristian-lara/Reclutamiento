@@ -17,7 +17,7 @@ export class UsuarioService {
     }
 
     async findAll(consulta = {}): Promise<Usuario[]> {
-        return this.usuarioModelo.find(consulta).populate('usuario').exec();
+        return this.usuarioModelo.find(consulta).exec();
     }
 
     async actualizar(_id: string, usuario: Usuario): Promise<Usuario> {
