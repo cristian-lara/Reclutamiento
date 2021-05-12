@@ -11,6 +11,10 @@ import { RutaNoEncontradoComponent } from './rutas/ruta-no-encontrado/ruta-no-en
 import { RutaInformacionGitComponent } from './rutas/ruta-informacion-git/ruta-informacion-git.component';
 import { RutaAdministracionDatosComponent } from './rutas/ruta-administracion-datos/ruta-administracion-datos.component';
 import { RutaInicioComponent } from './rutas/ruta-inicio/ruta-inicio.component';
+import {HttpClientModule} from '@angular/common/http';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ToasterModule, ToasterService} from 'angular2-toaster';
+import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -26,9 +30,15 @@ import { RutaInicioComponent } from './rutas/ruta-inicio/ruta-inicio.component';
     AppRoutingModule,
     CommonModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    ToasterService,
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
