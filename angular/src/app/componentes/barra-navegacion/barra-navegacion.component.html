@@ -1,0 +1,7 @@
+<ul class="nav fondo-barra" >
+
+  <li class="nav-item" *ngFor=" let item of items">
+    <a *ngIf="item.label !== 'Inicio'"class="nav-link" aria-current="page" [routerLink]="item.routerLink" >{{item.label}}</a>
+    <a *ngIf="item.label === 'Inicio'" class="nav-link active" aria-current="page" [routerLink]="item.routerLink" >{{item.label}}</a>
+  </li>
+</ul>
