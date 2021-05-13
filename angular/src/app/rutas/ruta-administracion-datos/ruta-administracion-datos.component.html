@@ -1,1 +1,43 @@
-<p>ruta-administracion-datos works!</p>
+<div class="container">
+  <br>
+  <br>
+  <div class="row justify-content-center">
+    <div class="col-sm-6">
+      <h3 class="text-success">Usuarios registrados</h3>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-sm-12">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Usuario</th>
+          <th>Fecha de inicio</th>
+          <th>Repos publicos</th>
+          <th>Acciones</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor=" let usuario of usuariosCreados">
+          <td>
+            {{usuario.name}}
+          </td>
+          <td>
+            {{usuario.created_at}}
+          </td>
+          <td>
+            {{usuario.public_repos}}
+          </td>
+          <td>
+                      <button class="btn btn-success-sm" (click)="editar(usuario)"><i class="material-icons">editar</i></button>
+                      <button class="btb btn-primary" (click)="eliminar(usuario)"><i class="material-icons">eliminar</i></button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

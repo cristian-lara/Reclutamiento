@@ -1,5 +1,5 @@
 export const encontrarIndice =  (arreglo: any[], registro: any) => {
   return arreglo.findIndex(
-    (elemento) => elemento.id === registro.id
+    (elemento) => elemento._id === registro._id
   )
 }

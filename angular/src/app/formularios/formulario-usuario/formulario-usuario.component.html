@@ -1,0 +1,26 @@
+
+<form *ngIf="formularioUsuario" [formGroup]="formularioUsuario" class="example-form">
+  <div class="modal-body">
+    <form action="">
+
+    </form>
+    <div class="form-group has-success">
+      <label class="form-control-label" for="inputValid">Nombre</label>
+      <input
+        formControlName="usuario"
+        [ngClass]="{
+             'is-valid': mensajesErrorUsuario.length === 0 && formularioUsuario?.get('usuario')?.value,
+             'is-invalid': mensajesErrorUsuario.length > 0
+             }"
+        type="text" placeholder="Nombre" class="form-control" id="inputValid">
+
+    </div>
+  </div>
+  <div class="modal-footer">
+
+    <button [disabled]="!usuarioCrearEditar"
+            (click)="crearEditar()"
+            data-bs-dismiss="modal"
+            class="btn btn-primary">Guardar</button>
+  </div>
+</form>

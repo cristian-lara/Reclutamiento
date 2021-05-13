@@ -22,13 +22,13 @@ export class ServicioGenerico<Entidad> {
     return this.httpClient.put(this.url + this.path + '/' + idEntidad , entidad);
   }
 
-  buscar(parametros?: any) {
+  buscar(parametros?: any): any {
     const consulta = convertirQueryParams(parametros);
     const urlConsulta = `${this.url}${this.path}${consulta}`;
     return this.httpClient.get(urlConsulta);
   }
 
-  eliminar(idEntidad: number) {
+  eliminar(idEntidad: string) {
     return this.httpClient.delete(this.url + this.path + '/' + idEntidad);
   }
 

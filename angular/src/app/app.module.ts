@@ -5,7 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {BarraNavegacionComponent} from './componentes/barra-navegacion/barra-navegacion.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import { RutaNoEncontradoComponent } from './rutas/ruta-no-encontrado/ruta-no-encontrado.component';
 import { RutaInformacionGitComponent } from './rutas/ruta-informacion-git/ruta-informacion-git.component';
@@ -16,6 +16,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastrModule} from 'ngx-toastr';
 import { CardRepoComponent } from './componentes/card-repo/card-repo.component';
 import { BlockUIModule } from 'ng-block-ui';
+import { FormularioUsuarioComponent } from './formularios/formulario-usuario/formulario-usuario.component';
+import { ModalUsuarioComponent } from './componentes/modal-usuario/modal-usuario.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { BlockUIModule } from 'ng-block-ui';
     RutaInformacionGitComponent,
     RutaAdministracionDatosComponent,
     RutaInicioComponent,
-    CardRepoComponent
+    CardRepoComponent,
+    FormularioUsuarioComponent,
+    ModalUsuarioComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +40,8 @@ import { BlockUIModule } from 'ng-block-ui';
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    BlockUIModule.forRoot()
+    BlockUIModule.forRoot(),
+    ReactiveFormsModule
   ],
   providers: [
   ],

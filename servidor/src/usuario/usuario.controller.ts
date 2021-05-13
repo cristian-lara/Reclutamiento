@@ -32,8 +32,7 @@ export class UsuarioController {
     @Delete('/:idUsuario')
     async eliminar(
         @Param('idUsuario') idUsuario: string,
-        @Body() _usuario: Usuario
-    ): Promise<Usuario> {
+    ): Promise<any> {
         return this._usuarioService.eliminar(idUsuario);
     }
 }

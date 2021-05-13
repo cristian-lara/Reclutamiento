@@ -24,7 +24,7 @@ export class UsuarioService {
         return this.usuarioModelo.findOneAndUpdate({_id}, usuario).exec();
     }
 
-    async eliminar(_id: string,): Promise<any> {
-        return this.usuarioModelo.deleteOne({_id}).exec();
+    async eliminar(_idUsuario: string,): Promise<any> {
+        return this.usuarioModelo.deleteOne({_id: _idUsuario}).exec();
     }
 }
