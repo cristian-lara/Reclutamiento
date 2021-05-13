@@ -4,6 +4,7 @@
 1. Prerequisitos
 2. Levantar ambiente
 3. Construccion cliente
+4. Funcionalidad
 
 
 ## Prerequisitos
@@ -25,3 +26,15 @@
 - Si existen cambios en el cliente angular realizarlos y al finalizar ejecutar el siguiente comando para construir el aplicativo `ng build --prod`
 - Cambios extras apuntar a otro servidor. En la carpeta environment se encuentra configurado la url para apuntar al backend del nest si se cambia el puerto del servidor nest debe cambiarse tambien en el cliente.
 - Una vez generado los archivos en la carpeta dist, en esta carpeta encontraremos un directorio llamado `angular`. el contenido de este directorio debe copiarse dentro de la carpeta  publico en el directorio `servidor`con la finalidad de que el aplicativo angular quede embebido en el servidor nest.
+
+
+## Funcionalidad
+
+### Informacion github
+Permite al usuario recuperar la informacion de cualquier usuario github
+url http://localhost:3000/informacion-github
+### Administracion de datos
+Permite al usuario recuperar la informacion almacenada en la base de datos
+url http://localhost:3000/administracion-datos
+
+**Nota**:  El dominio puede variar si se depliega en otro lado.
