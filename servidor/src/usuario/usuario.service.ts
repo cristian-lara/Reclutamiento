@@ -21,7 +21,7 @@ export class UsuarioService {
     }
 
     async actualizar(_id: string, usuario: Usuario): Promise<Usuario> {
-        return this.usuarioModelo.findOneAndUpdate({_id}, usuario).exec();
+        return this.usuarioModelo.findByIdAndUpdate({_id}, usuario).exec();
     }
 
     async eliminar(_idUsuario: string,): Promise<any> {

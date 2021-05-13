@@ -18,7 +18,7 @@ export class ServicioGenerico<Entidad> {
     return this.httpClient.post(this.url + this.path + '/many', entidad);
   }
 
-  editar(entidad: Entidad, idEntidad: number) {
+  editar( idEntidad: string, entidad: Entidad) {
     return this.httpClient.put(this.url + this.path + '/' + idEntidad , entidad);
   }
 

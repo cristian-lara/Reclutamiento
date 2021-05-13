@@ -29,12 +29,11 @@ export class FormularioUsuarioComponent implements OnInit {
     this.formularioUsuario = this.formBuilder.group(
       {
 
-        usuario: [this.usuarioCrearEditar ? this.usuarioCrearEditar.name : '',
+        name: [this.usuarioCrearEditar ? this.usuarioCrearEditar.name : '',
           [
             Validators.required,
             Validators.minLength(3),
             Validators.maxLength(100),
-            Validators.email
           ],
         ],
       });
@@ -57,8 +56,9 @@ export class FormularioUsuarioComponent implements OnInit {
           debounceTime(1000)
         )
         .subscribe((formulario) => {
+          console.log(this.formularioUsuario?.valid, formulario)
           if (this.formularioUsuario?.valid) {
-            this.usuarioEmitir.emit(this.usuarioCrearEditar)
+            this.usuarioEmitir.emit(formulario)
           } else {
             this.usuarioEmitir.emit(undefined)
           }
@@ -72,7 +72,7 @@ export class FormularioUsuarioComponent implements OnInit {
 
   private escucharCampoUsuario(): any {
     if (this.formularioUsuario) {
-      const controlUsuario = this.formularioUsuario.get('usuario') as AbstractControl;
+      const controlUsuario = this.formularioUsuario.get('name') as AbstractControl;
 
       const observableDeCambiosUsuario$ = controlUsuario.valueChanges;
 

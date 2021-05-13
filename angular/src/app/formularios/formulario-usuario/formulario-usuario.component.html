@@ -7,20 +7,23 @@
     <div class="form-group has-success">
       <label class="form-control-label" for="inputValid">Nombre</label>
       <input
-        formControlName="usuario"
+        formControlName="name"
         [ngClass]="{
-             'is-valid': mensajesErrorUsuario.length === 0 && formularioUsuario?.get('usuario')?.value,
+             'is-valid': mensajesErrorUsuario.length === 0 && formularioUsuario?.get('name')?.value,
              'is-invalid': mensajesErrorUsuario.length > 0
              }"
         type="text" placeholder="Nombre" class="form-control" id="inputValid">
+      <div *ngIf="mensajesErrorUsuario.length > 0">
+        <div *ngFor="let mensaje of mensajesErrorUsuario">
+          <ngb-alert [dismissible]="false">
+            <strong>Cuidado!</strong> {{mensaje}}.
+          </ngb-alert>
+        </div>
+      </div>
 
     </div>
   </div>
   <div class="modal-footer">
 
-    <button [disabled]="!usuarioCrearEditar"
-            (click)="crearEditar()"
-            data-bs-dismiss="modal"
-            class="btn btn-primary">Guardar</button>
   </div>
 </form>

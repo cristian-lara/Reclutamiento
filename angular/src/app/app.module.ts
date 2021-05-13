@@ -45,6 +45,9 @@ import { ModalUsuarioComponent } from './componentes/modal-usuario/modal-usuario
   ],
   providers: [
   ],
+  entryComponents: [
+    ModalUsuarioComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

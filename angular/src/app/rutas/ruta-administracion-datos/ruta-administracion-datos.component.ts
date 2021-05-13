@@ -4,6 +4,8 @@ import {UsuarioRestService} from '../../servicios/rest/usuario-rest.service';
 import {ToastrService} from 'ngx-toastr';
 import {BlockUIService} from 'ng-block-ui';
 import {encontrarIndice} from '../../funciones/encontrar-indice';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {ModalUsuarioComponent} from '../../componentes/modal-usuario/modal-usuario.component';
 
 @Component({
   selector: 'app-ruta-administracion-datos',
@@ -18,6 +20,7 @@ export class RutaAdministracionDatosComponent implements OnInit {
     private toastr: ToastrService,
     private readonly _usuarioRestService: UsuarioRestService,
     public blockuiService: BlockUIService,
+    private modalService: NgbModal
   ) {
   }
 
@@ -44,12 +47,24 @@ export class RutaAdministracionDatosComponent implements OnInit {
   }
 
   editar(usuario: UsuarioGitInterface) {
+    const modalRef = this.modalService.open(ModalUsuarioComponent);
+    modalRef.componentInstance.usuario = usuario;
+    modalRef.result.then(
+      r => {
+      }
+    ).catch(
+      e => {
+        console.log('e', e)
+        if (e === 'ok') {
+          this.cargarUsuarios();
+        }
+      }
+    )
 
   }
 
   eliminar(usuarios: UsuarioGitInterface) {
     this.blockuiService.start('aplicacion', 'Eliminando usuario...')
-    console.log('usuario', usuarios)
     this._usuarioRestService
       .eliminar(usuarios._id as string)
       .subscribe(
@@ -57,7 +72,7 @@ export class RutaAdministracionDatosComponent implements OnInit {
 
           this.blockuiService.stop('aplicacion')
           this.toastr.success('Usuario eliminado', 'Correcto');
-          if(this.usuariosCreados){
+          if (this.usuariosCreados) {
             const indice = encontrarIndice(this.usuariosCreados, usuarios);
             if (indice !== -1) {
               this.usuariosCreados.splice(indice, 1);
