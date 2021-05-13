@@ -5,6 +5,7 @@ import {UsuarioGitInterface} from '../../interfaces/usuario-git.interface';
 import {UsuarioRestService} from '../../servicios/rest/usuario-rest.service';
 import {GistInterface} from '../../interfaces/gist.interface';
 import {RepositorioInterface} from '../../interfaces/repositorio.interface';
+import {BlockUIService} from 'ng-block-ui';
 
 @Component({
   selector: 'app-ruta-informacion-git',
@@ -23,7 +24,8 @@ export class RutaInformacionGitComponent implements OnInit {
   constructor(
     private readonly _servicioGitRestService: GitServicioService,
     private toastr: ToastrService,
-    private readonly _usuarioRestService: UsuarioRestService
+    private readonly _usuarioRestService: UsuarioRestService,
+    public blockuiService: BlockUIService
   ) {
   }
 
@@ -32,6 +34,7 @@ export class RutaInformacionGitComponent implements OnInit {
   }
 
   buscarUsuarioGit() {
+    this.blockuiService.start('aplicacion','Buscando...');
     if (this.usuarioGithub) {
       this._servicioGitRestService
         .obtenerUsuarios(this.usuarioGithub)
@@ -39,9 +42,12 @@ export class RutaInformacionGitComponent implements OnInit {
           usuarioEncontrado => {
             this.usuarioGithubEncontrado = usuarioEncontrado;
             this.toastr.success('Usuario encontrado', 'Correcto');
+            this.blockuiService.stop('aplicacion');
           },
           error => {
             this.toastr.error('Error con el servidor', 'Error');
+            this.blockuiService.stop('aplicacion');
+
           }
         )
     }
@@ -49,6 +55,7 @@ export class RutaInformacionGitComponent implements OnInit {
   }
 
   guardarUsuario(usuario: UsuarioGitInterface) {
+    this.blockuiService.start('aplicacion','Buscando...');
 
     this._usuarioRestService
       .crear(usuario)
@@ -56,30 +63,42 @@ export class RutaInformacionGitComponent implements OnInit {
         (r: UsuarioGitInterface) => {
           this.idUSuarioCreado = r._id;
           this.toastr.success('Usuario creado correctamente', 'Correcto');
+          this.blockuiService.stop('aplicacion');
+
         },
         error => {
           this.toastr.error('Error con el servidor', 'Error');
+          this.blockuiService.stop('aplicacion');
+
         }
       )
   }
 
   verSeguidores() {
+    this.blockuiService.start('aplicacion','Buscando...');
+
     if (this.usuarioGithub) {
       this._servicioGitRestService
         .obtenerSeguidores(this.usuarioGithub)
         .subscribe(
           seguidores => {
             this.seguidoresEncontrados = seguidores;
+            this.blockuiService.stop('aplicacion');
+
             this.toastr.success('Seguidores encontrados', 'Correcto');
           },
           error => {
             this.toastr.error('Error con el servidor o no se encontraron seguidores', 'Error');
+            this.blockuiService.stop('aplicacion');
+
           }
         )
     }
   }
 
   verGist() {
+    this.blockuiService.start('aplicacion','Buscando...');
+
     if (this.usuarioGithub) {
       this._servicioGitRestService
         .obtenerGistUsuario(this.usuarioGithub)
@@ -87,15 +106,21 @@ export class RutaInformacionGitComponent implements OnInit {
           gist => {
             this.gistEncontrados = gist;
             this.toastr.success('Gist encontrados', 'Correcto');
+            this.blockuiService.stop('aplicacion');
+
           },
           error => {
             this.toastr.error('Error con el servidor o no existen gist', 'Error');
+            this.blockuiService.stop('aplicacion');
+
           }
         )
     }
   }
 
   verRepositoriosSuscritos() {
+    this.blockuiService.start('aplicacion','Buscando...');
+
     if (this.usuarioGithub) {
       this._servicioGitRestService
         .obtenerReposSuscritos(this.usuarioGithub)
@@ -103,15 +128,21 @@ export class RutaInformacionGitComponent implements OnInit {
           reposSuscritos => {
             this.reposSuscritosEncontrados = reposSuscritos;
             this.toastr.success('Repositorios suscritos encontrados', 'Correcto');
+            this.blockuiService.stop('aplicacion');
+
           },
           error => {
             this.toastr.error('Error con el servidor o no hay repositorios suscritos del usuario', 'Error');
+            this.blockuiService.stop('aplicacion');
+
           }
         )
     }
   }
 
   verRepositoris() {
+    this.blockuiService.start('aplicacion','Buscando...');
+
     if (this.usuarioGithub) {
       this._servicioGitRestService
         .obtnerReposUsuario(this.usuarioGithub)
@@ -119,9 +150,13 @@ export class RutaInformacionGitComponent implements OnInit {
           repos => {
             this.reposUsuarioEncontrados = repos;
             this.toastr.success('Repositorios encontrados', 'Correcto');
+            this.blockuiService.stop('aplicacion');
+
           },
           error => {
             this.toastr.error('Error con el servidor o no se encontraron repositorios', 'Error');
+            this.blockuiService.stop('aplicacion');
+
           }
         )
     }

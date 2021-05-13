@@ -15,6 +15,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastrModule} from 'ngx-toastr';
 import { CardRepoComponent } from './componentes/card-repo/card-repo.component';
+import { BlockUIModule } from 'ng-block-ui';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { CardRepoComponent } from './componentes/card-repo/card-repo.component';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    BlockUIModule.forRoot()
   ],
   providers: [
   ],

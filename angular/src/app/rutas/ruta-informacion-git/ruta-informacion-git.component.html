@@ -14,7 +14,7 @@
                 type="button"
                 id="button-addon2"
                 [disabled]="!usuarioGithub"
-        (click)="buscarUsuarioGit()"
+                (click)="buscarUsuarioGit()"
         >
           Buscar
         </button>
@@ -37,24 +37,44 @@
             <li class="list-group-item">Repositorios públicos: {{usuarioGithubEncontrado.public_repos}}</li>
             <li class="list-group-item">Gist públicos: {{usuarioGithubEncontrado.public_gists}}</li>
           </ul>
-          <a (click)="guardarUsuario(usuarioGithubEncontrado)"  class="btn btn-primary">Guardar usuario</a>
+          <a (click)="guardarUsuario(usuarioGithubEncontrado)" class="btn btn-primary">Guardar usuario</a>
         </div>
       </div>
     </div>
   </div>
   <div class="col-sm-6">
-<div class="row">
-  <div class="col-sm-12">
-    <div class="list-group">
-      <a (click)="verSeguidores()" class="list-group-item list-group-item-action active" >
-        Ver seguidores
-      </a>
-      <a (click)="verGist()" class="list-group-item list-group-item-action">Ver gist</a>
-      <a (click)="verRepositoriosSuscritos()" class="list-group-item list-group-item-action">Ver repositorios suscritos</a>
-      <a (click)="verRepositoris()" class="list-group-item list-group-item-action">Ver repositorios</a>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="list-group">
+          <a (click)="verSeguidores()" class="list-group-item list-group-item-action active">
+            Ver seguidores
+          </a>
+          <a (click)="verGist()" class="list-group-item list-group-item-action">Ver gist</a>
+          <a (click)="verRepositoriosSuscritos()" class="list-group-item list-group-item-action">Ver repositorios
+            suscritos</a>
+          <a (click)="verRepositoris()" class="list-group-item list-group-item-action">Ver repositorios</a>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <app-card-repo [gist]="gistEncontrados"
+                       [titulo]="'Gist usuario'"
+        ></app-card-repo>
+      </div>
+      <div class="col-sm-6">
+        <app-card-repo [repositorio]="reposSuscritosEncontrados"
+                       [titulo]="'Repositorios suscritos'"
+        ></app-card-repo>
+      </div>
+      <div class="col-sm-6">
+        <app-card-repo [repositorio]="reposUsuarioEncontrados"
+                       [titulo]="'Repositorios usuarios'"
+        ></app-card-repo>
+      </div>
+      <div class="col-sm-6">
+        <app-card-repo [repositorio]="seguidoresEncontrados"
+                       [titulo]="'Seguidores'"
+        ></app-card-repo>
+      </div>
     </div>
-  </div>
-
-</div>
   </div>
 </div>

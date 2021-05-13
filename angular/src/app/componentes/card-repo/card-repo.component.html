@@ -1,3 +1,4 @@
+<h5>{{titulo}}</h5>
 <div *ngIf="gist && gist.length>0" class="card">
   <div class="card-body card-elevation">
     <div class="card-header">
@@ -6,6 +7,34 @@
     <ul class="list-group list-group-flush">
       <li class="list-group-item">
         {{gist[0].description}}
+      </li>
+
+    </ul>
+  </div>
+</div>
+
+<div *ngIf="repositorio && repositorio.length>0" class="card">
+  <div  class="card-body card-elevation">
+    <div class="card-header">
+      TOTAL:  {{repositorio.length}}
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        {{repositorio[0].full_name}}
+      </li>
+
+    </ul>
+  </div>
+</div>
+
+<div *ngIf="seguidores && seguidores.length>0" class="card">
+  <div  class="card-body card-elevation">
+    <div class="card-header">
+      TOTAL:  {{seguidores.length}}
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        {{seguidores[0].name}}
       </li>
 
     </ul>
