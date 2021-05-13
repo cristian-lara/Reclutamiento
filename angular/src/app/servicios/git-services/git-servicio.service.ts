@@ -17,26 +17,26 @@ export class GitServicioService {
   ) { }
 
   obtenerUsuarios(usuario: string): Observable<UsuarioGitInterface> {
-    return this._http.get(`${this.url}/obtener-usuarios?usuario=${usuario}`);
+    return this._http.get(`${this.url}/git-servicios/obtener-usuarios?usuario=${usuario}`);
   }
 
   obtenerSeguidores(usuario:string): Observable<UsuarioGitInterface[]>{
     // @ts-ignore
-    return this._http.get(`${this.url}/obtener-seguidores?usuario=${usuario}`);
+    return this._http.get(`${this.url}/git-servicios/obtener-seguidores?usuario=${usuario}`);
   }
 
   obtenerGistUsuario(usuario: string): Observable<GistInterface[]> {
     // @ts-ignore
-    return this._http.get(`${this.url}/obtener-gist-usuario?usuario=${usuario}`);
+    return this._http.get(`${this.url}/git-servicios/obtener-gist-usuario?usuario=${usuario}`);
   }
 
   obtenerReposSuscritos(usuario:string): Observable<RepositorioInterface[]>{
     // @ts-ignore
-    return this._http.get(`${this.url}/obtener-repos-suscritos?usuario=${usuario}`);
+    return this._http.get(`${this.url}/git-servicios/obtener-repos-suscritos?usuario=${usuario}`);
   }
 
   obtnerReposUsuario(usuario: string): Observable<RepositorioInterface[]>{
     // @ts-ignore
-    return this._http.get(`${this.url}/obtener-repositorios?usuario=${usuario}`);
+    return this._http.get(`${this.url}/git-servicios/obtener-repositorios?usuario=${usuario}`);
   }
 }

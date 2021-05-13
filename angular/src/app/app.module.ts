@@ -13,8 +13,8 @@ import { RutaAdministracionDatosComponent } from './rutas/ruta-administracion-da
 import { RutaInicioComponent } from './rutas/ruta-inicio/ruta-inicio.component';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {ToasterModule, ToasterService} from 'angular2-toaster';
 import {ToastrModule} from 'ngx-toastr';
+import { CardRepoComponent } from './componentes/card-repo/card-repo.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,8 @@ import {ToastrModule} from 'ngx-toastr';
     RutaNoEncontradoComponent,
     RutaInformacionGitComponent,
     RutaAdministracionDatosComponent,
-    RutaInicioComponent
+    RutaInicioComponent,
+    CardRepoComponent
   ],
   imports: [
     BrowserModule,
@@ -36,8 +37,6 @@ import {ToastrModule} from 'ngx-toastr';
     ToastrModule.forRoot()
   ],
   providers: [
-    ToasterService,
-
   ],
   bootstrap: [AppComponent]
 })

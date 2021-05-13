@@ -1,2 +1,60 @@
-<p>ruta-informacion-git works!</p>
-<button (click)="mostrarToast()">toast</button>
+<div class="row justify-content-center separacion-top-2em">
+  <div class="col-sm-8">
+    <div class="row card-elevation padding20px">
+      <h5 class="text-info">Información de usuario</h5>
+
+      <div class="input-group mb-3 separacion-top-1em">
+        <input type="text" class="form-control"
+               placeholder="Ingrese usuario github..."
+               aria-label="usuario"
+               [(ngModel)]="usuarioGithub"
+               name="usuarioGithub"
+               aria-describedby="button-addon2">
+        <button class="btn btn-outline-secondary"
+                type="button"
+                id="button-addon2"
+                [disabled]="!usuarioGithub"
+        (click)="buscarUsuarioGit()"
+        >
+          Buscar
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+<div *ngIf="usuarioGithubEncontrado" class="row card-elevation padding20px separacion-top-margin-3em">
+  <div class="col-sm-6">
+    <div class="row ">
+      <div class="card" style="width: 18rem;">
+        <img [src]="usuarioGithubEncontrado.avatar_url" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{usuarioGithubEncontrado.name}}</h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Seguidores: {{usuarioGithubEncontrado.followers}}</li>
+            <li class="list-group-item">Siguiendo: {{usuarioGithubEncontrado.following}}</li>
+            <li class="list-group-item">Repositorios públicos: {{usuarioGithubEncontrado.public_repos}}</li>
+            <li class="list-group-item">Gist públicos: {{usuarioGithubEncontrado.public_gists}}</li>
+          </ul>
+          <a (click)="guardarUsuario(usuarioGithubEncontrado)"  class="btn btn-primary">Guardar usuario</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+<div class="row">
+  <div class="col-sm-12">
+    <div class="list-group">
+      <a (click)="verSeguidores()" class="list-group-item list-group-item-action active" >
+        Ver seguidores
+      </a>
+      <a (click)="verGist()" class="list-group-item list-group-item-action">Ver gist</a>
+      <a (click)="verRepositoriosSuscritos()" class="list-group-item list-group-item-action">Ver repositorios suscritos</a>
+      <a (click)="verRepositoris()" class="list-group-item list-group-item-action">Ver repositorios</a>
+    </div>
+  </div>
+
+</div>
+  </div>
+</div>

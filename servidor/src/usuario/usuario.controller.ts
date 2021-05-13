@@ -10,7 +10,7 @@ export class UsuarioController {
 
     @Post()
     async create(@Body() _usuario: UsuarioDto) {
-        await this._usuarioService.create(_usuario);
+        return  this._usuarioService.create(_usuario);
     }
 
     @Get()

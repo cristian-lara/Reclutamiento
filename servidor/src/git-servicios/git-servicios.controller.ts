@@ -3,6 +3,7 @@ import {UsuarioGitInterface} from './interfaces/usuario-git.interface';
 import {CONFIGURACION} from '../constantes/config';
 import {GistInterface} from './interfaces/gist.interface';
 import {RepositorioInterface} from './interfaces/repositorio.interface';
+import {throws} from 'assert';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const axios = require('axios').default;
 
@@ -18,7 +19,7 @@ export class GitServiciosController {
      * method: get
      * @param usuario
      */
-    @Get('/obtener-usuarios')
+    @Get('obtener-usuarios')
     async obtenerUsuarios(
         @Query('usuario') usuario: string
     ): Promise<UsuarioGitInterface> {

@@ -1,4 +1,5 @@
 export interface UsuarioGitInterface {
+  _id?: string;
     login?: string,
     id?: number,
     node_id?: string,
