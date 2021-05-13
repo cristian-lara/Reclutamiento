@@ -11,8 +11,11 @@ export class ServicioGenerico<Entidad> {
   ) {
   }
 
-  crear(entidad: Entidad) {
+  crear(entidad: any) {
     return this.httpClient.post(this.url + this.path, entidad);
+  }
+  crearMany(entidad: any) {
+    return this.httpClient.post(this.url + this.path + '/many', entidad);
   }
 
   editar(entidad: Entidad, idEntidad: number) {

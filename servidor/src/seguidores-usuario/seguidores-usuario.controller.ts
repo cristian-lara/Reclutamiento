@@ -10,7 +10,7 @@ export class SeguidorUsuarioController {
 
     @Post()
     async create(@Body() seguidorUsuario: SeguidorUsuarioDto) {
-        await this.seguidorUsuarioService.create(seguidorUsuario);
+        return  this.seguidorUsuarioService.create(seguidorUsuario);
     }
 
     @Get()

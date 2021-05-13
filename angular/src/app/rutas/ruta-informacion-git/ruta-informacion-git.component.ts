@@ -6,6 +6,9 @@ import {UsuarioRestService} from '../../servicios/rest/usuario-rest.service';
 import {GistInterface} from '../../interfaces/gist.interface';
 import {RepositorioInterface} from '../../interfaces/repositorio.interface';
 import {BlockUIService} from 'ng-block-ui';
+import {GistRestService} from '../../servicios/rest/gist-rest.service';
+import {SeguidoresRestService} from '../../servicios/rest/seguidores-rest.service';
+import {ReposRestService} from '../../servicios/rest/repos-rest.service';
 
 @Component({
   selector: 'app-ruta-informacion-git',
@@ -25,7 +28,10 @@ export class RutaInformacionGitComponent implements OnInit {
     private readonly _servicioGitRestService: GitServicioService,
     private toastr: ToastrService,
     private readonly _usuarioRestService: UsuarioRestService,
-    public blockuiService: BlockUIService
+    public blockuiService: BlockUIService,
+    private readonly _gistRestService: GistRestService,
+    private readonly _seguidoresRestService: SeguidoresRestService,
+    private readonly _repoRestService: ReposRestService,
   ) {
   }
 
@@ -178,5 +184,36 @@ export class RutaInformacionGitComponent implements OnInit {
           }
         )
     }
+  }
+
+  guardarGist() {
+    this.blockuiService
+      .start('aplicacion', 'Guardando...')
+    this.gistEncontrados?.map(r => {
+      r.owner = this.idUSuarioCreado
+      return r;
+    })
+    this._gistRestService
+      .crearMany(this.gistEncontrados)
+      .subscribe(
+        r => {
+          this.blockuiService.stop('aplicacion');
+          this.toastr.success('Gist agregador correctamente', 'Correcto');
+
+        },
+        error => {
+          this.blockuiService.stop('aplicacion');
+          this.toastr.error('Error con el servidor', 'Error');
+        }
+      )
+  }
+
+  guardarSeguidores() {
+  }
+
+  guardarRepos() {
+  }
+
+  guardarReposSuscritos() {
   }
 }

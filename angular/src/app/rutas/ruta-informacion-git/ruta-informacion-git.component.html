@@ -1,6 +1,6 @@
 <div class="row justify-content-center separacion-top-2em">
-  <div class="col-sm-8" >
-    <div  class="row card-elevation padding20px">
+  <div class="col-sm-8">
+    <div class="row card-elevation padding20px">
       <h5 class="text-info">Información de usuario</h5>
 
       <div class="input-group mb-3 separacion-top-1em">
@@ -62,36 +62,44 @@
                        [titulo]="'Gist usuario'"
         ></app-card-repo>
         <button
-          [disabled]="!gistEncontrados"
+          (click)="guardarGist()"
+          [disabled]="!(gistEncontrados && idUSuarioCreado)"
           class="btn btn-success btn-block separacion-top-margin-2em">
-          Guardar datos</button>
+          Guardar datos
+        </button>
       </div>
       <div class="col-sm-6 separacion-top-2em">
         <app-card-repo [repositorio]="reposSuscritosEncontrados"
                        [titulo]="'Repositorios suscritos'"
         ></app-card-repo>
         <button
-          [disabled]="!reposSuscritosEncontrados"
+          (click)="guardarReposSuscritos()"
+          [disabled]="!(reposSuscritosEncontrados&& idUSuarioCreado)"
           class="btn btn-success btn-block separacion-top-margin-2em">
-          Guardar datos </button>
+          Guardar datos
+        </button>
       </div>
       <div class="col-sm-6 separacion-top-2em">
         <app-card-repo [repositorio]="reposUsuarioEncontrados"
                        [titulo]="'Repositorios usuarios'"
         ></app-card-repo>
         <button
-          [disabled]="!reposUsuarioEncontrados"
+          (click)="guardarRepos()"
+          [disabled]="!(reposUsuarioEncontrados&& idUSuarioCreado)"
           class="btn btn-success btn-block separacion-top-margin-2em">
-          Guardar datos </button>
+          Guardar datos
+        </button>
       </div>
       <div class="col-sm-6 separacion-top-2em">
         <app-card-repo [seguidores]="seguidoresEncontrados"
                        [titulo]="'Seguidores'"
         ></app-card-repo>
         <button
-          [disabled]="!seguidoresEncontrados"
+          (click)="guardarSeguidores()"
+          [disabled]="!(seguidoresEncontrados&& idUSuarioCreado)"
           class="btn btn-success btn-block separacion-top-margin-2em">
-          Guardar datos </button>
+          Guardar datos
+        </button>
       </div>
     </div>
   </div>

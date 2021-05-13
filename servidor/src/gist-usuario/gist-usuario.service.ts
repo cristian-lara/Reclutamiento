@@ -16,8 +16,18 @@ export class GistUsuarioService {
         return gistUsuarioCreado.save();
     }
 
+    async createMany(gistUsuario: GistUsuarioDto[]): Promise<any> {
+        gistUsuario.forEach(
+            r => {
+                const gistUsuarioCreado = new this.gistUsuarioModelo(r);
+                gistUsuarioCreado.save();
+            }
+        )
+        return 'termino';
+    }
+
     async findAll(consulta = {}): Promise<GistUsuario[]> {
-        return this.gistUsuarioModelo.find(consulta).populate('usuario').exec();
+        return this.gistUsuarioModelo.find(consulta).populate('owner').exec();
     }
 
     async actualizar(_id: string, gistUsuario: GistUsuario): Promise<GistUsuario> {

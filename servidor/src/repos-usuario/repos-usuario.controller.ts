@@ -10,7 +10,7 @@ export class RepoUsuarioController {
 
     @Post()
     async create(@Body() _repoUsuario: RepoUsuarioDto) {
-        await this._repoUsuarioService.create(_repoUsuario);
+        return  this._repoUsuarioService.create(_repoUsuario);
     }
 
     @Get()

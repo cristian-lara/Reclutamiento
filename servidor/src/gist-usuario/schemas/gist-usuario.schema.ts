@@ -31,7 +31,7 @@ export class GistUsuario {
     comments?: number;
     @Prop()
     user?: string;
-    @Prop({ type: { type: mongoose.Schema.Types.ObjectId, ref: 'Usuario' } })
+    @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Usuario' })
     owner: Usuario;
     @Prop()
     truncated?: boolean

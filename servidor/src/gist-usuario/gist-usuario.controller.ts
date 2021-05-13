@@ -10,7 +10,13 @@ export class GistUsuarioController {
 
     @Post()
     async create(@Body() gist: GistUsuarioDto) {
-        await this.gistService.create(gist);
+
+        return  this.gistService.create(gist);
+    }
+    @Post('many')
+    async createMany(@Body() gist: GistUsuarioDto[]) {
+        console.log(gist)
+        return  this.gistService.createMany(gist);
     }
 
     @Get()

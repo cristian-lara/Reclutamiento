@@ -13,6 +13,6 @@ export interface GistInterface {
     description?: string;
     comments?: number;
     user?: any;
-    owner?: UsuarioGitInterface;
+    owner?: UsuarioGitInterface | string;
     truncated?: boolean;
 }

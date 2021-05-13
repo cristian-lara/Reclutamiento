@@ -2,6 +2,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import * as mongoose from 'mongoose';
 import {SeguidorUsuario} from '../../seguidores-usuario/schemas/seguidor-usuario.schema';
+import {GistUsuario} from '../../gist-usuario/schemas/gist-usuario.schema';
 
 export type UsuarioDocument = Usuario & Document;
 
@@ -58,6 +59,8 @@ export class Usuario {
 
     @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'SeguidorUsuario' }] })
     seguidores: SeguidorUsuario[];
+    @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'GistUsuario' }] })
+    gists: GistUsuario[];
 
 }
 
