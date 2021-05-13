@@ -80,6 +80,8 @@ export class RepoUsuario {
     watchers?: number;
     @Prop()
     default_branch?: string;
+    @Prop()
+    esRepoSuscrito?: boolean;
 }
 
 export const ReposUsuarioSchema = SchemaFactory.createForClass(RepoUsuario);

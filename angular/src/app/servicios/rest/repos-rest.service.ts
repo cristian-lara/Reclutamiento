@@ -7,7 +7,7 @@ import {UsuarioGitInterface} from '../../interfaces/usuario-git.interface';
 @Injectable({
   providedIn: 'root'
 })
-export class SeguidoresRestService extends ServicioGenerico<UsuarioGitInterface>{
+export class ReposRestService extends ServicioGenerico<UsuarioGitInterface>{
 
   url = environment.url;
 
@@ -17,7 +17,7 @@ export class SeguidoresRestService extends ServicioGenerico<UsuarioGitInterface>
     super(
       _httpClient,
       environment.url,
-      '/seguidores-usuario'
+      '/repos-usuario'
     )
   }
 
