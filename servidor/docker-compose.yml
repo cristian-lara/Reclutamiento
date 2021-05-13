@@ -10,7 +10,7 @@ services:
     environment:
       - MONGODB_DATABASE="test"
     ports:
-      - 27017:27017
+      - 30703:27017
     volumes:
       - mongo-db-volume:/data/db
       - mongo-config-volume:/data/configdb
