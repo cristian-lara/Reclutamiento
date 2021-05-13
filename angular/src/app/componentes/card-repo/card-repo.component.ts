@@ -13,10 +13,11 @@ export class CardRepoComponent implements OnInit {
   @Input() titulo?: string
   @Input() gist?: GistInterface[];
   @Input() repositorio?: RepositorioInterface[];
-  @Input() seguidores?: UsuarioGitInterface[]
+  @Input() seguidores?: UsuarioGitInterface[];
   constructor() { }
 
   ngOnInit(): void {
+    console.log('gist entrantes', this.gist)
   }
 
 }

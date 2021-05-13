@@ -1,6 +1,6 @@
 <div class="row justify-content-center separacion-top-2em">
-  <div class="col-sm-8">
-    <div class="row card-elevation padding20px">
+  <div class="col-sm-8" >
+    <div  class="row card-elevation padding20px">
       <h5 class="text-info">Información de usuario</h5>
 
       <div class="input-group mb-3 separacion-top-1em">
@@ -27,7 +27,7 @@
 <div *ngIf="usuarioGithubEncontrado" class="row card-elevation padding20px separacion-top-margin-3em">
   <div class="col-sm-6">
     <div class="row ">
-      <div class="card" style="width: 18rem;">
+      <div class="card" style="width: 18rem; margin-left: 5rem">
         <img [src]="usuarioGithubEncontrado.avatar_url" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">{{usuarioGithubEncontrado.name}}</h5>
@@ -42,7 +42,9 @@
       </div>
     </div>
   </div>
-  <div class="col-sm-6">
+  <div class="col-sm-6" style="
+    margin-left: -5rem;
+">
     <div class="row">
       <div class="col-sm-12">
         <div class="list-group">
@@ -55,25 +57,41 @@
           <a (click)="verRepositoris()" class="list-group-item list-group-item-action">Ver repositorios</a>
         </div>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-6 separacion-top-2em">
         <app-card-repo [gist]="gistEncontrados"
                        [titulo]="'Gist usuario'"
         ></app-card-repo>
+        <button
+          [disabled]="!gistEncontrados"
+          class="btn btn-success btn-block separacion-top-margin-2em">
+          Guardar datos</button>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-6 separacion-top-2em">
         <app-card-repo [repositorio]="reposSuscritosEncontrados"
                        [titulo]="'Repositorios suscritos'"
         ></app-card-repo>
+        <button
+          [disabled]="!reposSuscritosEncontrados"
+          class="btn btn-success btn-block separacion-top-margin-2em">
+          Guardar datos </button>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-6 separacion-top-2em">
         <app-card-repo [repositorio]="reposUsuarioEncontrados"
                        [titulo]="'Repositorios usuarios'"
         ></app-card-repo>
+        <button
+          [disabled]="!reposUsuarioEncontrados"
+          class="btn btn-success btn-block separacion-top-margin-2em">
+          Guardar datos </button>
       </div>
-      <div class="col-sm-6">
-        <app-card-repo [repositorio]="seguidoresEncontrados"
+      <div class="col-sm-6 separacion-top-2em">
+        <app-card-repo [seguidores]="seguidoresEncontrados"
                        [titulo]="'Seguidores'"
         ></app-card-repo>
+        <button
+          [disabled]="!seguidoresEncontrados"
+          class="btn btn-success btn-block separacion-top-margin-2em">
+          Guardar datos </button>
       </div>
     </div>
   </div>

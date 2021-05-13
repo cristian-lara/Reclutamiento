@@ -7,6 +7,7 @@ export interface GistInterface {
     git_push_url?: string;
     html_url?: string;
     public?: boolean;
+    files?: any
     created_at?: string;
     updated_at?: string;
     description?: string;

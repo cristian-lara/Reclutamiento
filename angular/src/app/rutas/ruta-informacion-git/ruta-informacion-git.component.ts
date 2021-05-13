@@ -34,7 +34,7 @@ export class RutaInformacionGitComponent implements OnInit {
   }
 
   buscarUsuarioGit() {
-    this.blockuiService.start('aplicacion','Buscando...');
+    this.blockuiService.start('aplicacion', 'Buscando...');
     if (this.usuarioGithub) {
       this._servicioGitRestService
         .obtenerUsuarios(this.usuarioGithub)
@@ -55,7 +55,7 @@ export class RutaInformacionGitComponent implements OnInit {
   }
 
   guardarUsuario(usuario: UsuarioGitInterface) {
-    this.blockuiService.start('aplicacion','Buscando...');
+    this.blockuiService.start('aplicacion', 'Buscando...');
 
     this._usuarioRestService
       .crear(usuario)
@@ -63,6 +63,7 @@ export class RutaInformacionGitComponent implements OnInit {
         (r: UsuarioGitInterface) => {
           this.idUSuarioCreado = r._id;
           this.toastr.success('Usuario creado correctamente', 'Correcto');
+
           this.blockuiService.stop('aplicacion');
 
         },
@@ -75,7 +76,7 @@ export class RutaInformacionGitComponent implements OnInit {
   }
 
   verSeguidores() {
-    this.blockuiService.start('aplicacion','Buscando...');
+    this.blockuiService.start('aplicacion', 'Buscando...');
 
     if (this.usuarioGithub) {
       this._servicioGitRestService
@@ -85,7 +86,11 @@ export class RutaInformacionGitComponent implements OnInit {
             this.seguidoresEncontrados = seguidores;
             this.blockuiService.stop('aplicacion');
 
-            this.toastr.success('Seguidores encontrados', 'Correcto');
+            if (this.seguidoresEncontrados.length === 0) {
+              this.toastr.warning('No se encontro resultados', 'Cuidado');
+            } else {
+              this.toastr.success('Seguidores encontrados', 'Correcto');
+            }
           },
           error => {
             this.toastr.error('Error con el servidor o no se encontraron seguidores', 'Error');
@@ -97,7 +102,7 @@ export class RutaInformacionGitComponent implements OnInit {
   }
 
   verGist() {
-    this.blockuiService.start('aplicacion','Buscando...');
+    this.blockuiService.start('aplicacion', 'Buscando...');
 
     if (this.usuarioGithub) {
       this._servicioGitRestService
@@ -105,7 +110,11 @@ export class RutaInformacionGitComponent implements OnInit {
         .subscribe(
           gist => {
             this.gistEncontrados = gist;
-            this.toastr.success('Gist encontrados', 'Correcto');
+            if (this.gistEncontrados.length === 0) {
+              this.toastr.warning('No se encontro resultados', 'Cuidado');
+            } else {
+              this.toastr.success('Gist encontrados', 'Correcto');
+            }
             this.blockuiService.stop('aplicacion');
 
           },
@@ -119,7 +128,7 @@ export class RutaInformacionGitComponent implements OnInit {
   }
 
   verRepositoriosSuscritos() {
-    this.blockuiService.start('aplicacion','Buscando...');
+    this.blockuiService.start('aplicacion', 'Buscando...');
 
     if (this.usuarioGithub) {
       this._servicioGitRestService
@@ -127,7 +136,11 @@ export class RutaInformacionGitComponent implements OnInit {
         .subscribe(
           reposSuscritos => {
             this.reposSuscritosEncontrados = reposSuscritos;
-            this.toastr.success('Repositorios suscritos encontrados', 'Correcto');
+            if (this.reposSuscritosEncontrados.length === 0) {
+              this.toastr.warning('No se encontro resultados', 'Cuidado');
+            } else {
+              this.toastr.success('Repositorios suscritos encontrados', 'Correcto');
+            }
             this.blockuiService.stop('aplicacion');
 
           },
@@ -141,7 +154,7 @@ export class RutaInformacionGitComponent implements OnInit {
   }
 
   verRepositoris() {
-    this.blockuiService.start('aplicacion','Buscando...');
+    this.blockuiService.start('aplicacion', 'Buscando...');
 
     if (this.usuarioGithub) {
       this._servicioGitRestService
@@ -149,7 +162,12 @@ export class RutaInformacionGitComponent implements OnInit {
         .subscribe(
           repos => {
             this.reposUsuarioEncontrados = repos;
-            this.toastr.success('Repositorios encontrados', 'Correcto');
+
+            if (this.reposUsuarioEncontrados.length === 0) {
+              this.toastr.warning('No se encontro resultados', 'Cuidado');
+            } else {
+              this.toastr.success('Repositorios encontrados', 'Correcto');
+            }
             this.blockuiService.stop('aplicacion');
 
           },
